@@ -1,5 +1,5 @@
 const express = require('express');
-const errorHandler = require('./errorHandlingMiddleware');
+const errorHandler = require('../middleware/errorHandlingMiddleware');
 const app = express();
 const userTableController = require('../controllers/getUserTableController');
 const userTableRoute = express.Router();
