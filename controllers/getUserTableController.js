@@ -8,20 +8,20 @@ const userTableController = {
             if(results){
                 
                 const filteredResults = results.map(user => {
-                    if( user.loginPIN === null){
-                        return {
-                            id : user.id,
-                            phoneNumber: user.phoneNumber,
-                            userName: user.userName,
-                            cardID: user.cardID,
-                            emailID: user.emailID,
-                            brandID: user.brandID,
-                            theatreID: user.theatreID
-                        };
-                    }
-                    else {
+                    // if( user.loginPIN === null){
+                    //     return {
+                    //         id : user.id,
+                    //         phoneNumber: user.phoneNumber,
+                    //         userName: user.userName,
+                    //         cardID: user.cardID,
+                    //         emailID: user.emailID,
+                    //         brandID: user.brandID,
+                    //         theatreID: user.theatreID
+                    //     };
+                    // }
+                    // else {
                         return user; // Keep the original user data if loginPIN is not null
-                    }
+                    //}
                 });
 
                 return res.status(200).json({ filteredResults });

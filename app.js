@@ -19,6 +19,8 @@ const walletTable = require('./models/walletTable')
 const offerTable = require('./models/offerTable')
 const transactionTable = require('./models/transactionTable')
 const userRoleTable = require('./models/userRoleTable')
+require('dotenv').config();
+
 //const errorMiddleware = require('./middleware/errorMiddleware');
 const app = express();
 // Middleware
