@@ -3,7 +3,7 @@ const seque = require('../config/db')
 
 //											
 const movieTable = seque.define('movieTable', {
-    movieID:{
+    id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
         autoIncrement:true,

@@ -1,7 +1,17 @@
+const cors = require('cors'); // Import the cors middleware
 const express = require('express');
 const bodyParser = require('body-parser');
-//const routes = require('./routes');
-const userTableRoute = require('./routes/userTableRoute');
+require('dotenv').config();
+
+const postLoginDataRouter = require('./routes/postLoginDataRouter');
+const getUserDataRouter = require('./routes/getUserDataRouter');
+const postClickerRoute = require('./routes/postClickerRoutes');
+const postRegistrationRouter = require('./routes/postRegistrationRouter')
+const brandDetailsRouter = require('./routes/getBrandDetailsRoute');
+const adDetailsRouter = require('./routes/adDetailsRouter');
+const movieDetailsRouter = require('./routes/movieDetailsRouter')
+const schedulerDataRouter = require('./routes/schedulerDataRouter')
+
 const userTable = require('./models/userTable');
 const advertisementTable = require('./models/advertisementTable')
 const clickerDeviceDetailsTable = require('./models/clickerDeviceDetailsTable');
@@ -19,19 +29,25 @@ const walletTable = require('./models/walletTable')
 const offerTable = require('./models/offerTable')
 const transactionTable = require('./models/transactionTable')
 const userRoleTable = require('./models/userRoleTable')
-require('dotenv').config();
+
+
 
 //const errorMiddleware = require('./middleware/errorMiddleware');
 const app = express();
 // Middleware
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Custom middleware
 //app.use(errorMiddleware); // Error handling middleware
 // Routes
-app.use('/api', userTableRoute);
-const PORT = process.env.PORT || 8012;
+app.use('', postLoginDataRouter);
+app.use('',getUserDataRouter);
+app.use('/api',postClickerRoute);
+app.use('',postRegistrationRouter);
+app.use('',brandDetailsRouter);
+app.use('',adDetailsRouter);
+app.use('',movieDetailsRouter);
+app.use('',schedulerDataRouter);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    });
+module.exports = app;

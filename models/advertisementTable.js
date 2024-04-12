@@ -27,6 +27,14 @@ const advertisementTable = seque.define('advertisementTable', {
     brandID:{
         type:DataTypes.INTEGER,
     },
+    duration:{
+        type:DataTypes.INTEGER,
+        defaultValue: 0,
+    },
+    adStartTime:{
+        type:DataTypes.INTEGER,
+        defaultValue: 0,
+    },
     isSample:{
         type:DataTypes.BOOLEAN,
     },
@@ -35,8 +43,7 @@ const advertisementTable = seque.define('advertisementTable', {
       }
 },
 {
-  // options
-  tableName: 'advertisementTable' // specify the exact table name
+  tableName: 'advertisementTable'
 });
 
 advertisementTable.belongsTo(brandTable,  { foreignKey: 'brandID' , onUpdate: 'NO ACTION',onDelete: 'CASCADE'});
