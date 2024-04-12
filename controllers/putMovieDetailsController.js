@@ -1,14 +1,21 @@
 const connection = require('../config/db');
 
-const updateMovie = {
+const updateMovieDetails = {
     updateMovieData: async (req, res) => {
         const { id } = req.params; 
 
         try {
-           // const { id } = req.body;
+            const { isDeleted, isExpired, startDate, endDate } = req.body;
 
-            const updateQuery = `UPDATE movieTable SET /* updated fields */ WHERE id = ${id}`;
+            let setClause = '';// Constructing the SET clause dynamically based on provided fields
+            if (isDeleted !== undefined) setClause += `isDeleted = ${isDeleted}, `;
+            if (isExpired !== undefined) setClause += `isExpired = ${isExpired}, `;
+            if (startDate !== undefined) setClause += `startDate = '${startDate}', `;
+            if (endDate !== undefined) setClause += `endDate = '${endDate}', `;
 
+            setClause = setClause.replace(/,\s*$/, '');// Removing the trailing comma and space
+
+            const updateQuery = `UPDATE movieTable SET ${setClause} WHERE id = ${id}`;// Constructing the final update query
             const result = await connection.query(updateQuery);
 
             if (result) {
@@ -23,4 +30,4 @@ const updateMovie = {
     }
 };
 
-module.exports = updateMovie;
+module.exports = updateMovieDetails;

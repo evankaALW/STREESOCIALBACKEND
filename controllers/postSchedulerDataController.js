@@ -8,7 +8,6 @@ const postSchedulerDataController = {
             console.log(schedulerData.video_links);
             schedulerData.video_links = JSON.stringify(schedulerData.video_links);
             console.log(schedulerData);
-        //id, screenID, startDate, slotIndex, videoLinks, movieID, isDeleted, createdAt, updatedAt
             const query = `INSERT INTO schedulerTable( screenID, startDate, slotIndex, videoLinks, 
                 movieID, isDeleted, createdAt, updatedAt) VALUES 
                 (${schedulerData.theatre_id},'${schedulerData.start_date}',${schedulerData.slot_index},'${schedulerData.video_links}',

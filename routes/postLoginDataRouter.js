@@ -1,6 +1,6 @@
 const express = require('express');
 const errorHandler = require('../middleware/errorHandlingMiddleware');
-const authenticationMiddleware = require('../middleware/authenticationMiddleware');
+//const authenticationMiddleware = require('../middleware/authenticationMiddleware');
 
 const app = express();
 const postLoginData = require('../controllers/postLoginData');

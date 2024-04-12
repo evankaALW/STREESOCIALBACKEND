@@ -2,7 +2,7 @@ const connection = require('../config/db');
 
 const getSchedulerData = {
     schedulerData : async (req, res) => {
-        try{ //id, screenID, startDate, slotIndex, videoLinks, movieID, isDeleted, createdAt, updatedAt
+        try{
             const query = 'SELECT `id`, `screenID`, `startDate`, `slotIndex`, `videoLinks`, `movieID`, `isDeleted`  FROM `schedulerData` AS `schedulerData`';
             const scheduler = await connection.query(query);
             if(scheduler)

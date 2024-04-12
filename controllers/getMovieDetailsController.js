@@ -9,7 +9,7 @@ const getMovieDetails = {
     
             if(result)
             {
-                return res.status(200).json({movieData: result})
+                return res.status(200).json({"movieData": result})
             }
             
         }

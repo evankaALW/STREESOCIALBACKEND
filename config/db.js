@@ -1,22 +1,14 @@
 const { Sequelize } = require('sequelize');
-
-
+require('dotenv').config();
 
 const seque = new Sequelize(
-    'streesocialmasterdb',
-    'root',
-    'Abc#12345',
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
     {
-        host : 'localhost',
-        dialect: 'mysql'
+        host : process.env.DB_HOST,
+        dialect: process.env.DIALECT
     }
-//   process.env.DB_NAME,
-//   process.env.DB_USER,
-//   process.env.DB_PASSWORD, // This is the password
-//   {
-//     host: process.env.DB_HOST,
-//     dialect: 'mysql'
-//   }
 );
 
 seque.authenticate()

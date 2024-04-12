@@ -4,10 +4,7 @@ const errorHandler = require('../middleware/errorHandlingMiddleware');
 
 const app = express();
 const postRegistrationData = require('../controllers/postRegistrationData');
-//const postRegsitrationController = require('../controllers/postRegistrationData');
 const postRegistrationRouter = express.Router();
-
-//userTableRoute.post('/login', userTableController.login);
 
 postRegistrationRouter.post('/registerUser',postRegistrationData.postRegistration);
 postRegistrationRouter.use(errorHandler);

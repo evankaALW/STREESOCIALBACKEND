@@ -1,6 +1,4 @@
-const userTable = require('../models/userTable'); // Assuming User model is defined
 const connection = require('../config/db'); // Assuming you have a database configuration file
-
 
 const postRegistrationData ={
     postRegistration: async (req, res) => {
@@ -9,17 +7,10 @@ const postRegistrationData ={
   } = req.body;
 
   try {
-
-
     const queryOne = `SELECT id from brandTable WHERE brandName = '${brand}'`;
-
-    //const queryTwo = `SELECT theatreID from theatreTable WHERE theatreName = ${theatre}`;
-
     const [brandIDJSON] = await connection.query(queryOne);
-   
     brandID = brandIDJSON[0].id;
     console.log(brandID)
-    //const [theatreIDJSON] = connection.query(queryTwo);
     if(brandID){
         console.log("brandID : ",brandID)
         console.log("req", req.body)
@@ -32,14 +23,8 @@ const postRegistrationData ={
     }
     }
     else{
-      console.log('brandId nit found')
+      console.log('brandId not found')
     }
-    // if(theatreIDJSON){
-    //     theatreID = theatreIDJSON.theatreID;
-    // }
-
-
-    
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Registration Server error' });

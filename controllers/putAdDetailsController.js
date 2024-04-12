@@ -5,11 +5,15 @@ const updateAdvertisement = {
         const { id } = req.params; 
 
         try {
-            const { id } = req.body;
+            const { isDeleted, adStartTime, questionTableID } = req.body;
+            let setClause = '';// Constructing the SET clause dynamically based on provided fields
+            if (isDeleted !== undefined) setClause += `isDeleted = ${isDeleted}, `;
+            if (adStartTime !== undefined) setClause += `isExpired = ${isExpired}, `;
+            if (questionTableID !== undefined) setClause += `startDate = '${startDate}', `;
 
-            // Construct your SQL update query
-            const updateQuery = `UPDATE advertisementtable SET /* updated fields */ WHERE id = ${id}`;
+            setClause = setClause.replace(/,\s*$/, '');// Removing the trailing comma and space
 
+            const updateQuery = `UPDATE advertisementtable SET ${setClause} WHERE id = ${id}`;// Construct your SQL update query
             const result = await connection.query(updateQuery);
 
             if (result) {

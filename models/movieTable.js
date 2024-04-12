@@ -14,6 +14,12 @@ const movieTable = seque.define('movieTable', {
     movieDesc:{
         type:DataTypes.STRING,
     },
+    movieURLPartOne:{
+        type:DataTypes.TEXT,
+    },
+    movieURLPartTwo:{
+        type:DataTypes.TEXT,
+    },
     movieRuntime:{
         type:DataTypes.DOUBLE,
     },
@@ -35,6 +41,12 @@ const movieTable = seque.define('movieTable', {
     posterImage:{
         type:DataTypes.BLOB,
     },
+    displayToggle:{
+        type:DataTypes.INTEGER,
+    },
+    userResponseToggle:{
+        type:DataTypes.INTEGER,
+    },
     isDeleted:{
         type:DataTypes.BOOLEAN,
       },
@@ -43,7 +55,6 @@ const movieTable = seque.define('movieTable', {
       }
 },
 {
-  // options
   tableName: 'movieTable' // specify the exact table name
 });
 
