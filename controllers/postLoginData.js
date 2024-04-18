@@ -6,7 +6,7 @@ const postLoginData ={
     postLogin: async (req, res) => {
   const { userName, loginPIN } = req.body;
   try {
-    const query = `SELECT * FROM USERTABLE WHERE userName = '${userName}' AND loginPIN = ${loginPIN}`;
+    const query = `SELECT * FROM userTable WHERE userName = '${userName}' AND loginPIN = ${loginPIN}`;
     const [result] = await connection.query(query);
     if(result[0]){
         return res.status(200).json({ "result":result});
